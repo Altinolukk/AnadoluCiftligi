@@ -1,12 +1,9 @@
 {
-    "name": "AnadoluCiftligi.Market",
-    "rootNamespace": "AnadoluCiftligi.Market",
+    "name": "AnadoluCiftligi.Pricing",
+    "rootNamespace": "AnadoluCiftligi.Pricing",
     "references": [
-        "AnadoluCiftligi.Events",
-        "AnadoluCiftligi.Currency",
-        "AnadoluCiftligi.Products",
-        "AnadoluCiftligi.Drops",
-        "AnadoluCiftligi.Pricing"
+        "AnadoluCiftligi.Animals",
+        "AnadoluCiftligi.Products"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
