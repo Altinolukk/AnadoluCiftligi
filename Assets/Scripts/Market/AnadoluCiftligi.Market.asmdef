@@ -1,0 +1,19 @@
+{
+    "name": "AnadoluCiftligi.Market",
+    "rootNamespace": "AnadoluCiftligi.Market",
+    "references": [
+        "AnadoluCiftligi.Events",
+        "AnadoluCiftligi.Currency",
+        "AnadoluCiftligi.Products",
+        "AnadoluCiftligi.Drops"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
