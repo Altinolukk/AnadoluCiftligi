@@ -1,13 +1,11 @@
 {
-    "name": "AnadoluCiftligi.UI",
-    "rootNamespace": "AnadoluCiftligi.UI",
+    "name": "AnadoluCiftligi.Shop",
+    "rootNamespace": "AnadoluCiftligi.Shop",
     "references": [
         "AnadoluCiftligi.Events",
-        "AnadoluCiftligi.Core",
         "AnadoluCiftligi.Currency",
         "AnadoluCiftligi.Animals",
-        "AnadoluCiftligi.Shop",
-        "Unity.TextMeshPro"
+        "AnadoluCiftligi.Pricing"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
