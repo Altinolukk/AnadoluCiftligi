@@ -1,0 +1,17 @@
+{
+    "name": "AnadoluCiftligi.Animals",
+    "rootNamespace": "AnadoluCiftligi.Animals",
+    "references": [
+        "AnadoluCiftligi.Products",
+        "AnadoluCiftligi.Currency"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

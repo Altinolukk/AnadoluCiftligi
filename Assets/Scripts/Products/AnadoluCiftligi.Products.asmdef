@@ -1,0 +1,14 @@
+{
+    "name": "AnadoluCiftligi.Products",
+    "rootNamespace": "AnadoluCiftligi.Products",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

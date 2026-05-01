@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6260a512187026b409ac1a9736386147, type: 3}
+  m_Name: Chicken_T1
+  m_EditorClassIdentifier: AnadoluCiftligi.Animals::AnadoluCiftligi.Animals.AnimalData
+  id: chicken_t1
+  displayName: Tavuk
+  kind: 0
+  sprite: {fileID: 0}
+  description: 
+  tier: 1
+  nextTier: {fileID: 0}
+  product: {fileID: 11400000, guid: 14e3fe54c57c4eb44b3288a556d84a33, type: 2}
+  productionInterval: 5
+  productionAmount: 1
+  purchaseCurrencyId: gold
+  purchaseCost: 0
