@@ -1,5 +1,6 @@
 using UnityEngine;
 using AnadoluCiftligi.Events;
+using AnadoluCiftligi.Save;
 
 namespace AnadoluCiftligi.Core
 {
@@ -7,6 +8,8 @@ namespace AnadoluCiftligi.Core
     /// Application-wide lifecycle owner. Single source of truth for game state.
     /// Must be placed as an explicit GameObject in the bootstrap scene; never auto-created.
     /// State changes and application pause/resume events are broadcast via <see cref="EventBus"/>.
+    /// Owns the high-level save/load triggering: Load during Loading state, Save on
+    /// application pause when actively playing.
     /// </summary>
     [DisallowMultipleComponent]
     public class GameManager : MonoBehaviour
@@ -30,6 +33,9 @@ namespace AnadoluCiftligi.Core
         [Header("Bootstrap")]
         [Tooltip("If enabled, GameManager auto-progresses Boot -> Loading -> Ready -> Playing on Start. Disable to drive states manually (e.g., from a splash scene).")]
         [SerializeField] private bool autoStartOnAwake = true;
+
+        [Tooltip("If enabled, SaveSystem.Save() is invoked when the application pauses while in Playing state.")]
+        [SerializeField] private bool autoSaveOnPause = true;
 
         public GameState CurrentState { get; private set; } = GameState.Boot;
 
@@ -62,7 +68,7 @@ namespace AnadoluCiftligi.Core
             }
 
             ChangeState(GameState.Loading);
-            // FAZ 1.4: SaveSystem.Load() will be awaited here before transitioning to Ready.
+            SaveSystem.Load();
             ChangeState(GameState.Ready);
             ChangeState(GameState.Playing);
         }
@@ -84,12 +90,17 @@ namespace AnadoluCiftligi.Core
         {
             if (isPaused)
             {
-                if (CurrentState == GameState.Playing)
+                bool wasPlaying = CurrentState == GameState.Playing;
+                if (wasPlaying)
                 {
                     ChangeState(GameState.Paused);
                 }
                 EventBus.Publish(new ApplicationPausedEvent());
-                // FAZ 1.4: SaveSystem.Save() will run via this event.
+
+                if (wasPlaying && autoSaveOnPause)
+                {
+                    SaveSystem.Save();
+                }
             }
             else
             {

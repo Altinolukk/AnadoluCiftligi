@@ -1,9 +1,8 @@
 {
-    "name": "AnadoluCiftligi.Core",
-    "rootNamespace": "AnadoluCiftligi.Core",
+    "name": "AnadoluCiftligi.Save",
+    "rootNamespace": "AnadoluCiftligi.Save",
     "references": [
-        "AnadoluCiftligi.Events",
-        "AnadoluCiftligi.Save"
+        "AnadoluCiftligi.Events"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
