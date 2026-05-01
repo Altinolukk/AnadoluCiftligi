@@ -1,0 +1,19 @@
+{
+    "name": "AnadoluCiftligi.Drops",
+    "rootNamespace": "AnadoluCiftligi.Drops",
+    "references": [
+        "AnadoluCiftligi.Events",
+        "AnadoluCiftligi.Animals",
+        "AnadoluCiftligi.Products",
+        "AnadoluCiftligi.Currency"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
