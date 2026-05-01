@@ -41,4 +41,32 @@ namespace AnadoluCiftligi.Animals
             MaxPending = maxPending;
         }
     }
+
+    /// <summary>
+    /// Raised by <see cref="AnimalSpawner"/> after a new animal instance has
+    /// been instantiated and initialized.
+    /// </summary>
+    public readonly struct AnimalSpawnedEvent : IGameEvent
+    {
+        public readonly Animal Animal;
+
+        public AnimalSpawnedEvent(Animal animal)
+        {
+            Animal = animal;
+        }
+    }
+
+    /// <summary>
+    /// Raised by <see cref="AnimalSpawner"/> just before an animal instance
+    /// is destroyed (manual despawn or merge consumption).
+    /// </summary>
+    public readonly struct AnimalDespawnedEvent : IGameEvent
+    {
+        public readonly Animal Animal;
+
+        public AnimalDespawnedEvent(Animal animal)
+        {
+            Animal = animal;
+        }
+    }
 }

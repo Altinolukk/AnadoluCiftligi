@@ -3,6 +3,7 @@
     "rootNamespace": "AnadoluCiftligi.Animals",
     "references": [
         "AnadoluCiftligi.Events",
+        "AnadoluCiftligi.Save",
         "AnadoluCiftligi.Products",
         "AnadoluCiftligi.Currency"
     ],

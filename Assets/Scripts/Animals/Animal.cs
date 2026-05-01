@@ -139,6 +139,55 @@ namespace AnadoluCiftligi.Animals
             EventBus.Publish(new AnimalProductHarvestedEvent(this, data, data.Product, collected));
         }
 
+        /// <summary>
+        /// Captures current runtime state for persistence. Position is read
+        /// from this GameObject's transform.
+        /// </summary>
+        public AnimalSaveData CaptureSaveData()
+        {
+            Vector3 pos = transform.position;
+            return new AnimalSaveData
+            {
+                AnimalId = data != null ? data.Id : string.Empty,
+                PosX = pos.x,
+                PosY = pos.y,
+                PendingProducts = pendingProducts,
+                ProductionTimer = productionTimer
+            };
+        }
+
+        /// <summary>
+        /// Applies a previously captured snapshot. Position is set on the
+        /// transform; pending count is clamped to the configured cap.
+        /// Caller is responsible for calling <see cref="Initialize"/> with
+        /// the matching AnimalData before invoking this.
+        /// </summary>
+        public void RestoreSaveData(AnimalSaveData snapshot)
+        {
+            if (snapshot == null)
+            {
+                return;
+            }
+
+            Vector3 pos = transform.position;
+            transform.position = new Vector3(snapshot.PosX, snapshot.PosY, pos.z);
+
+            int clamped = snapshot.PendingProducts;
+            if (clamped < 0)
+            {
+                clamped = 0;
+            }
+            if (clamped > maxPendingProducts)
+            {
+                clamped = maxPendingProducts;
+            }
+
+            pendingProducts = clamped;
+            productionTimer = snapshot.ProductionTimer;
+
+            EventBus.Publish(new AnimalPendingChangedEvent(this, pendingProducts, maxPendingProducts));
+        }
+
 #if UNITY_EDITOR
         [ContextMenu("Debug / Force Produce One Cycle")]
         private void EditorForceProduce()
