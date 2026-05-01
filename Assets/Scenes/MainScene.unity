@@ -164,11 +164,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 130376366}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8eae1786e1b45d24a847f9f79dc17a71, type: 3}
+  m_Script: {fileID: 11500000, guid: ed2c60bbb8e92364b916352d0014f9f8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  gameManager: {fileID: 208178053}
-  altinText: {fileID: 298316476}
+  m_EditorClassIdentifier: AnadoluCiftligi.UI::AnadoluCiftligi.UI.UIManager
+  rootCanvas: {fileID: 1819610878}
 --- !u!1 &208178051
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,10 +209,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 208178051}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3020c9109674c1946bb6ecc4e373231f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c1c5e36278c4a04ca4492ac4e39f30f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  altin: 0
+  m_EditorClassIdentifier: AnadoluCiftligi.Core::AnadoluCiftligi.Core.GameManager
+  autoStartOnAwake: 1
+  autoSaveOnPause: 1
 --- !u!1 &298316474
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 298316475}
   - component: {fileID: 298316477}
   - component: {fileID: 298316476}
+  - component: {fileID: 298316478}
   m_Layer: 5
   m_Name: AltinText
   m_TagString: Untagged
@@ -351,6 +352,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 298316474}
   m_CullTransparentMesh: 1
+--- !u!114 &298316478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298316474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 473b36de82e766948b46535ca801adba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AnadoluCiftligi.UI::AnadoluCiftligi.UI.GameStateLabel
+  label: {fileID: 298316476}
+  format: 'Durum: {0}'
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,7 +670,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 208178053}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: AltinArtir
         m_Mode: 1

@@ -1,11 +1,9 @@
 {
-    "name": "AnadoluCiftligi.UI",
-    "rootNamespace": "AnadoluCiftligi.UI",
+    "name": "AnadoluCiftligi.Currency",
+    "rootNamespace": "AnadoluCiftligi.Currency",
     "references": [
         "AnadoluCiftligi.Events",
-        "AnadoluCiftligi.Core",
-        "AnadoluCiftligi.Currency",
-        "Unity.TextMeshPro"
+        "AnadoluCiftligi.Save"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
