@@ -1,3 +1,4 @@
+using System;
 using AnadoluCiftligi.Events;
 using AnadoluCiftligi.Products;
 using UnityEngine;
@@ -6,9 +7,9 @@ namespace AnadoluCiftligi.Drops
 {
     /// <summary>
     /// Animated 2D sprite that flies from a source position to a target along
-    /// a sine-shaped arc, then publishes <see cref="ProductDropCollectedEvent"/>
-    /// and self-destructs. Object pooling replaces the self-destruct path in
-    /// FAZ 2.5; until then each drop is freshly Instantiated/Destroyed.
+    /// a sine-shaped arc. On arrival publishes <see cref="ProductDropCollectedEvent"/>
+    /// and either returns to the spawner's object pool (when a releaser is bound)
+    /// or self-destructs as a fallback.
     /// </summary>
     [DisallowMultipleComponent]
     public class ProductDrop : MonoBehaviour
@@ -32,6 +33,7 @@ namespace AnadoluCiftligi.Drops
         private bool active;
         private ProductDefinition product;
         private int amount;
+        private Action<ProductDrop> releaseToPool;
 
         private void Awake()
         {
@@ -43,6 +45,16 @@ namespace AnadoluCiftligi.Drops
                     spriteRenderer = GetComponentInChildren<SpriteRenderer>();
                 }
             }
+        }
+
+        /// <summary>
+        /// Bound once by <see cref="ProductDropSpawner"/> at pool createFunc time.
+        /// On arrival, this callback returns the drop to the pool; if null, the
+        /// drop self-destructs (legacy / non-pooled path).
+        /// </summary>
+        public void SetPoolReleaser(Action<ProductDrop> releaser)
+        {
+            releaseToPool = releaser;
         }
 
         public void Launch(Vector3 from, Vector3 to, ProductDefinition payloadProduct, int payloadAmount)
@@ -92,7 +104,15 @@ namespace AnadoluCiftligi.Drops
             active = false;
             transform.position = targetPosition;
             EventBus.Publish(new ProductDropCollectedEvent(product, amount));
-            Destroy(gameObject);
+
+            if (releaseToPool != null)
+            {
+                releaseToPool(this);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
